@@ -8,6 +8,6 @@ autopublish
 insecure
 accounts-twitter
 meteorhacks:npm
-
-
+stylus
+iron:router
 npm-container

@@ -1,12 +1,28 @@
 <head>
 	<title>Digital Diamonds</title>
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/front.css">
 </head>
 <body>
-	{{> login}}
+    <div class="wrapper">
+        <div class="login">
+            {{> login}}
+        </div>
+    </div>
 </body>
 
+<template name="shop">
+    <h1>shop</h1>
+</template>
+
 <template name="login">
-	<button class="loginWithTwitter">
-		Login with Twitter
-	</button>
+    <h1>Digital Diamonds</h1>
+    <section>
+        <h2>What is this?</h2>
+        <p>Queue songs in public via social media!</p>
+    </section>
+    <section>
+        <h2>Sign in as a shop owner</h2>
+        <img src="/imgs/twittersignin.png" class="loginWithTwitter">
+    </section>
 </template>
