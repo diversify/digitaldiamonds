@@ -28,19 +28,19 @@ Meteor.startup(function () {
   // });
 
 
-  twit.stream('statuses/filter', {track:"iphone",'language': 'en'}, function(stream) {
-    stream.on('data', function(data) {
-      Fiber(function() {
-        // if (!!data.text && !!data.user.screen_name) {
-        if (data) {
-          console.log(++c);
-          // Tweets.insert({
-          //   data: data
-          // });
-        }
-      }).run();
-    });
-  });
+  // twit.stream('statuses/filter', {track:"iphone",'language': 'en'}, function(stream) {
+  //   stream.on('data', function(data) {
+  //     Fiber(function() {
+  //       // if (!!data.text && !!data.user.screen_name) {
+  //       if (data) {
+  //         console.log(++c);
+  //         // Tweets.insert({
+  //         //   data: data
+  //         // });
+  //       }
+  //     }).run();
+  //   });
+  // });
   
   // code to run on server at startup
 });
