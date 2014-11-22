@@ -1,5 +1,5 @@
 Router.configure({
-  layoutTemplate: 'main',
+  layoutTemplate: 'main'
 });
 
 Router.map(function() {
@@ -10,12 +10,19 @@ Router.map(function() {
 	});
 
 	this.route('shop', {
-		path: '/shop',
+		path: '/:shop',
+        onBeforeAction: function() {
+            if(!Meteor.user()) {
+                Router.go('home'); // you are drunk
+            }
+            this.next();
+        },
 		template:'shop',
 		data:function () {
-			return {example:["exampledata","asd"]};
+			return {
+                currentSongs: PlaylistsCollection.find(),
+                shop: this.params.shop
+            };
 		}
 	});
-
-
- });
+});
