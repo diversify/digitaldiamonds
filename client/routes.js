@@ -14,7 +14,7 @@ Router.map(function() {
         template: 'admin',
         onAfterAction: function () {
             if (!Meteor.user()) {
-                Router.go('shop', { shop: this.params.shop }); // you are drunk
+                Router.go('shop', { shop: this.params.shop });
             }
         },
         data: function () {
@@ -30,6 +30,10 @@ Router.map(function() {
     this.route('shop', {
         path: '/:shop',
         template: 'shop',
+        onBeforeAction: function() {
+            $('body').addClass('shop');
+            this.next();
+        },
         onAfterAction: function () {
             if (Meteor.user()) {
                 Router.go('admin', { shop: this.params.shop });
@@ -40,7 +44,6 @@ Router.map(function() {
                 currentSongs: PlaylistsCollection.find(),
                 shop: this.params.shop
             };
-<<<<<<< HEAD
 		}
 	});
 
@@ -66,8 +69,6 @@ Router.map(function() {
 			}
 		}
 	});
-
-
 
  // });
 });
