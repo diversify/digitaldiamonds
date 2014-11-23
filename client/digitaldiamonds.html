@@ -8,6 +8,7 @@
     <div class="wrapper">
         <div class="login">
             {{> login}}
+            {{> spotifyControls}}
         </div>
     </div>
 </template>
@@ -15,6 +16,7 @@
 <template name="main">
     {{>yield}}
 </template>
+
 
 <template name="shop">
     <h1>shop</h1>
@@ -35,4 +37,8 @@
         <h2>Sign in as a shop owner</h2>
         <img src="/imgs/twittersignin.png" class="loginWithTwitter">
     </section>
+</template>
+
+<template name="spotifyControls">
+    <button class="logIn">Log in with spoify</button>
 </template>
