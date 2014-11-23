@@ -77,7 +77,7 @@ Meteor.spotifyAPI = {
 			$.ajax({
 				type:'POST',
 				headers: {
-		        	'Authorization': 'Bearer ' + "BQDU6NUwh0wr8zyp0q0s1IkYAWyVtPozooGC4e9gUUwa1k-YK8Vy-o15U4YFIEGBqhX0vZ4OKDDyfJfK30Es535zU_shPmVE6Bzl4g47k3jQyHUwp4SgEhZXqZET7QCtmTcxRnH2arjMoccP5L5t6xXXQ2fjJJCOQ4dsBg1r5xrHfmyY8_yQYpoH",
+		        	'Authorization': 'Bearer ' + "BQAKKlJVfwX5EkA-QQzfh0YAj6G4ugZbNs6HdFzy5fdoP4K1pkwlJehNwvtfxHQeJi-hmD06SxsMBGmyns5ZDcW2_s15rZDMZkk5SjYKThvbUVrVQzORDjI7ndmlahLKubwHbVAwYU-xWX1M2zKQluLHTV9bWbftdJUiqD1Na3q44ymhjKrmF148",
 					'Content-Type': 'application/json',
 					'Accept': 'application/json'
 		    	},
@@ -91,7 +91,7 @@ Meteor.spotifyAPI = {
 						{
 							_id:Meteor.user()._id
 						}, {
-							$set:{'profile.playlist': response.external_urls.spotify}
+							$set:{'profile.playlist': response}
 
 						}
 					);
