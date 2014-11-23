@@ -1,0 +1,1 @@
+PlaylistsCollection = new Mongo.Collection('PlaylistsCollection');
