@@ -5,19 +5,19 @@ Router.configure({
 Router.map(function() {
 
     this.route('home', {
-		path: '/',
-		template:'index'
-	});
+        path: '/',
+        template: 'index'
+    });
 
     this.route('admin', {
         path: '/:shop/admin',
         template: 'admin',
-        onAfterAction: function() {
-            if(!Meteor.user()) {
+        onAfterAction: function () {
+            if (!Meteor.user()) {
                 Router.go('shop', { shop: this.params.shop }); // you are drunk
             }
         },
-        data: function() {
+        data: function () {
             return {
                 currentSongs: PlaylistsCollection.find(),
                 shop: ShopsCollection.findOne({
@@ -27,19 +27,19 @@ Router.map(function() {
         }
     });
 
-	this.route('shop', {
-		path: '/:shop',
-        template:'shop',
-        onAfterAction: function() {
-            if(Meteor.user()) {
+    this.route('shop', {
+        path: '/:shop',
+        template: 'shop',
+        onAfterAction: function () {
+            if (Meteor.user()) {
                 Router.go('admin', { shop: this.params.shop });
             }
         },
-        data:function () {
-			return {
+        data: function () {
+            return {
                 currentSongs: PlaylistsCollection.find(),
                 shop: this.params.shop
             };
-		}
-	});
+        }
+    });
 });
