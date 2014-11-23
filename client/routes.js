@@ -4,21 +4,38 @@ Router.configure({
 
 Router.map(function() {
 
-	this.route('home', {
+    this.route('home', {
 		path: '/',
 		template:'index'
 	});
 
+    this.route('admin', {
+        path: '/:shop/admin',
+        template: 'admin',
+        onAfterAction: function() {
+            if(!Meteor.user()) {
+                Router.go('shop', { shop: this.params.shop }); // you are drunk
+            }
+        },
+        data: function() {
+            return {
+                currentSongs: PlaylistsCollection.find(),
+                shop: ShopsCollection.findOne({
+                    name: this.params.shop
+                })
+            };
+        }
+    });
+
 	this.route('shop', {
 		path: '/:shop',
-        onBeforeAction: function() {
-            if(!Meteor.user()) {
-                Router.go('home'); // you are drunk
+        template:'shop',
+        onAfterAction: function() {
+            if(Meteor.user()) {
+                Router.go('admin', { shop: this.params.shop });
             }
-            this.next();
         },
-		template:'shop',
-		data:function () {
+        data:function () {
 			return {
                 currentSongs: PlaylistsCollection.find(),
                 shop: this.params.shop

@@ -22,24 +22,10 @@
         <section class="map">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.4447809513417!2d18.063830000000003!3d59.342223000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465f9d5ba23621a1%3A0x35c888367d7f060e!2sSpotify+Sweden+AB!5e0!3m2!1ssv!2sse!4v1416690888055"
-                width="400" height="300" frameborder="0" style="border:0">
+                width="100%" height="300" frameborder="0" style="border:0">
             </iframe>
         </section>
-        <div class="playlist">
-            <section>
-                <h2>Our Playlist</h2>
-                <ul>
-                    {{#each currentSongs}}
-                        <li>{{this.artist}} - {{this.song}}
-                            <span class="adder">
-                                <i class="fa fa-twitter"></i> {{this.poster_twitterhandle}}
-                                <time>{{this.posted_at}}</time>
-                            </span>
-                        </li>
-                    {{/each}}
-                </ul>
-            </section>
-        </div>
+        {{>playlist}}
     </div>
 </template>
 
@@ -53,4 +39,48 @@
         <h2>Sign in as a shop owner</h2>
         <img src="/imgs/twittersignin.png" class="loginWithTwitter">
     </section>
+</template>
+
+<template name="playlist">
+    <div class="playlist">
+        <section>
+            <h2>Our Playlist</h2>
+            <ul>
+                {{#each currentSongs}}
+                <li>
+                    <h3>
+                        {{#if currentUser }}
+                            <i class="fa fa-close"></i>
+                        {{/if}}
+                        {{this.artist}} - {{this.song}}
+                    </h3>
+                    <span class="adder">
+                        <i class="fa fa-twitter"></i> {{this.poster_twitterhandle}}
+                        <time>{{this.posted_at}}</time>
+                    </span>
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+    </div>
+</template>
+
+<template name="admin">
+    <div class="wrapper admin">
+        <header>
+            <h1>Admin: {{shop.name}}</h1>
+        </header>
+
+        <section>
+            <h2><i class="fa fa-twitter"></i> What is your #queue response?</h2>
+            <textarea class="shopresponse">{{shop.response}}</textarea>
+        </section>
+
+        <section>
+            <h2>Playlist URL:</h2>
+            <input type="text" class="playlisturl" disabled value="{{currentUser.profile.playlist}}">
+        </section>
+
+        {{>playlist}}
+    </div>
 </template>
