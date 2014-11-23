@@ -18,13 +18,37 @@ Router.map(function() {
             }
         },
         data: function () {
-            return {
-                currentSongs: PlaylistsCollection.find(),
-                shop: ShopsCollection.findOne({
-                    name: this.params.shop
-                })
-            };
+        	var s = ShopsCollection.findOne();
+        	if(s){
+	            return {
+	                currentSongs: PlaylistsCollection.find(),
+	                shop: s
+	            };
+        	}
         }
+    });
+
+    this.route('auth', {
+    	path: '/auth',
+    	action: function () {
+    		var hash = {};
+    		location.hash.replace(/^#\/?/, '').split('&').forEach(function(kv) {
+    			var spl = kv.indexOf('=');
+    			if (spl != -1) {
+    				hash[kv.substring(0, spl)] = decodeURIComponent(kv.substring(spl+1));
+    			}
+    		});
+
+    		if (hash.access_token) {
+    			window.opener.postMessage(JSON.stringify({
+    				type:'access_token',
+    				access_token: hash.access_token,
+    				expires_in: hash.expires_in || 0
+    			}), '*');
+
+    			window.close();
+    		}
+    	}
     });
 
     this.route('shop', {
@@ -40,34 +64,8 @@ Router.map(function() {
                 currentSongs: PlaylistsCollection.find(),
                 shop: this.params.shop
             };
-<<<<<<< HEAD
 		}
 	});
-
-	this.route('auth', {
-		path: '/auth',
-		action: function () {
-			var hash = {};
-			location.hash.replace(/^#\/?/, '').split('&').forEach(function(kv) {
-				var spl = kv.indexOf('=');
-				if (spl != -1) {
-					hash[kv.substring(0, spl)] = decodeURIComponent(kv.substring(spl+1));
-				}
-			});
-
-			if (hash.access_token) {
-				window.opener.postMessage(JSON.stringify({
-					type:'access_token',
-					access_token: hash.access_token,
-					expires_in: hash.expires_in || 0
-				}), '*');
-
-				window.close();
-			}
-		}
-	});
-
-
 
  // });
 });
