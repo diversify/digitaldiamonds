@@ -14,7 +14,7 @@ Router.map(function() {
         template: 'admin',
         onAfterAction: function () {
             if (!Meteor.user()) {
-                Router.go('shop', { shop: this.params.shop }); // you are drunk
+                Router.go('shop', { shop: this.params.shop });
             }
         },
         data: function () {
@@ -54,6 +54,10 @@ Router.map(function() {
     this.route('shop', {
         path: '/:shop',
         template: 'shop',
+        onBeforeAction: function() {
+            $('body').addClass('shop');
+            this.next();
+        },
         onAfterAction: function () {
             if (Meteor.user()) {
                 Router.go('admin', { shop: this.params.shop });
@@ -64,10 +68,32 @@ Router.map(function() {
                 currentSongs: PlaylistsCollection.find(),
                 shop: this.params.shop
             };
+
 		}
 	});
 
- // });
+	// this.route('auth', {
+	// 	path: '/auth',
+	// 	action: function () {
+	// 		var hash = {};
+	// 		location.hash.replace(/^#\/?/, '').split('&').forEach(function(kv) {
+	// 			var spl = kv.indexOf('=');
+	// 			if (spl != -1) {
+	// 				hash[kv.substring(0, spl)] = decodeURIComponent(kv.substring(spl+1));
+	// 			}
+	// 		});
+
+	// 		if (hash.access_token) {
+	// 			window.opener.postMessage(JSON.stringify({
+	// 				type:'access_token',
+	// 				access_token: hash.access_token,
+	// 				expires_in: hash.expires_in || 0
+	// 			}), '*');
+
+	// 			window.close();
+	// 		}
+	// 	}
+	// });
 });
 
 

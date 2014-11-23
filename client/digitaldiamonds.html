@@ -8,25 +8,21 @@
 
 <template name="splash">
     <header class="center">
-        
-        <h1 class="center">Digital Diamonds</h1>
-        <img src="/imgs/logo.png">
+        <!--<h1 class="center">Digital Diamonds</h1>-->
+        <img src="/imgs/logo.png" class="splashlogo">
     </header>
 </template>
 
 <template name="index">
-
-    <video>
-      <source src="/imgs/movie.webm" type="video/mp4">
-    Your browser does not support the video tag.
+    <video class="fullpage" autoplay loop muted>
+        <source src="/imgs/movie.webm" type="video/mp4">
+        <!--<source src="movie.ogg" type="video/ogg">-->
+        Your browser does not support the video tag.
     </video>
 
     {{> splash}}
     <div class="wrapper">
-        <div class="login">
-            {{> login}}
-            {{> spotifyControls}}
-        </div>
+        {{> login}}
     </div>
 </template>
 
@@ -47,15 +43,17 @@
 </template>
 
 <template name="login">
-    <h1>Digital Diamonds</h1>
-    <section>
-        <h2>What is this?</h2>
-        <p>Queue songs in public via social media!</p>
-    </section>
-    <section>
-        <h2>Sign in as a shop owner</h2>
-        <img src="/imgs/twittersignin.png" class="loginWithTwitter">
-    </section>
+    <div class="splashpage">
+        {{> splash}}
+        <!--<section>
+            <h2>What is this?</h2>
+            <p>Queue songs in public via social media!</p>
+        </section>-->
+        <section>
+            <h2>Sign in as a shop owner</h2>
+            <img src="/imgs/twittersignin.png" class="loginWithTwitter">
+        </section>
+    </div>
 </template>
 
 <template name="playlist">

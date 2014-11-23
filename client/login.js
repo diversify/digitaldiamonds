@@ -1,6 +1,12 @@
 Template.login.events({
 	'click .loginWithTwitter': function () {
-		Meteor.loginWithTwitter(function(err,a,b,c){console.log(err)});
+		Meteor.loginWithTwitter(function(err,a,b,c){
+            if(!err) {
+                Router.go('admin', {
+                    shop: Meteor.user().services.twitter.screenName
+                });
+            }
+        });
 	}
 });
 
