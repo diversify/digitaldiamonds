@@ -3,7 +3,7 @@ Meteor.spotifyAPI = {
 		// $.ajax({
 		// 	type:'POST',
 		// 	headers: {
-	 //        	'Authorization': 'Bearer ' + "BQAKKlJVfwX5EkA-QQzfh0YAj6G4ugZbNs6HdFzy5fdoP4K1pkwlJehNwvtfxHQeJi-hmD06SxsMBGmyns5ZDcW2_s15rZDMZkk5SjYKThvbUVrVQzORDjI7ndmlahLKubwHbVAwYU-xWX1M2zKQluLHTV9bWbftdJUiqD1Na3q44ymhjKrmF148",
+	 //        	'Authorization': 'Bearer ' + "<insert spotify-auth-token",
 		// 		'Content-Type': 'application/json',
 		// 		'Accept': 'application/json'
 	 //    	},
@@ -25,7 +25,7 @@ Meteor.spotifyAPI = {
 
 
 		var header = {
-        	'Authorization': 'Bearer ' + "BQAKKlJVfwX5EkA-QQzfh0YAj6G4ugZbNs6HdFzy5fdoP4K1pkwlJehNwvtfxHQeJi-hmD06SxsMBGmyns5ZDcW2_s15rZDMZkk5SjYKThvbUVrVQzORDjI7ndmlahLKubwHbVAwYU-xWX1M2zKQluLHTV9bWbftdJUiqD1Na3q44ymhjKrmF148",
+        	'Authorization': 'Bearer ' + "<insert spotify-auth-token>",
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
     	}
